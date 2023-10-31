@@ -6,9 +6,11 @@ CRON Job
 import json
 import os
 
+from invoke import task
 from loguru import logger
-import sys
 
+
+@task
 def sync_hotkeys(c, parent_dir: str = "."):
     """
     This script crawls through a directory and finds every obsidian hotkeys.json file.
@@ -44,9 +46,10 @@ def sync_hotkeys(c, parent_dir: str = "."):
     logger.info("Hotkeys sunc")
 
 
+@task
 def clean(c):
     c.run("black .")
-    c.run("isort .")
+
 
 if __name__ == "__main__":
     sync_hotkeys("")
