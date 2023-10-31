@@ -1,17 +1,21 @@
+"""
+CRON Job
+*/30 * * * * cd /home/brayps/Documents/Obsidian && /home/brayps/.cache/pypoetry/virtualenvs/obsidian-d0oIucnu-py3.10/bin/python3 tasks.py &> /home/brayps/Documents/Obsidian/tasks.log
+"""
+
 import json
 import os
 
-from invoke import task
 from loguru import logger
+import sys
 
-
-@task
 def sync_hotkeys(c, parent_dir: str = "."):
     """
     This script crawls through a directory and finds every obsidian hotkeys.json file.
     It then combines every hotkeys file into one hotkey file and overwrites all the existing hotkey files
     starting with the least recently updated ones.
     """
+    logger.info("Syncing hotkeys...")
 
     combined_hotkeys = {}
     file_modification_times = {}
@@ -27,7 +31,7 @@ def sync_hotkeys(c, parent_dir: str = "."):
     sorted_files = sorted(file_modification_times.items(), key=lambda x: x[1])
 
     for filepath, _ in sorted_files:
-        logger.info(filepath)
+        logger.debug(filepath)
         with open(filepath, "r") as f:
             data = json.load(f)
         combined_hotkeys.update(data)
@@ -37,12 +41,12 @@ def sync_hotkeys(c, parent_dir: str = "."):
         with open(filepath, "w") as f:
             json.dump(combined_hotkeys, f, indent=2)
 
-    logger.info(
-        "Combined hotkeys have been written to all 'hotkeys.json' files, starting with the least recently updated ones."
-    )
+    logger.info("Hotkeys sunc")
 
 
-@task
 def clean(c):
     c.run("black .")
     c.run("isort .")
+
+if __name__ == "__main__":
+    sync_hotkeys("")

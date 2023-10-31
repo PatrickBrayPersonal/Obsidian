@@ -68,17 +68,6 @@ files = [
 ]
 
 [[package]]
-name = "invoke"
-version = "2.2.0"
-description = "Pythonic task execution"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "invoke-2.2.0-py3-none-any.whl", hash = "sha256:6ea924cc53d4f78e3d98bc436b08069a03077e6f85ad1ddaa8a116d7dad15820"},
-    {file = "invoke-2.2.0.tar.gz", hash = "sha256:ee6cbb101af1a859c7fe84f2a264c059020b0cb7fe3535f9424300ab568f6bd5"},
-]
-
-[[package]]
 name = "isort"
 version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
@@ -200,4 +189,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "720dc41ed6204a2ec0480ce742e3ae3b523e643db8632358be0d41c6a1c12566"
+content-hash = "d507c66ced02ff0002461aae8b756b83945e2a50d8184ecbe464d6077fd4545f"
